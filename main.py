@@ -82,7 +82,7 @@ def plot(final_OGD, final_EGD, final_ONS, final_rebalnce, final_fixed_stock, num
     plt.ylabel('Wealth')
     plt.xlabel('number_of_trades')
     plt.title('ORPS methods comparison')
-    plt.savefig('ORPS methods comparison python.png')
+    plt.savefig('ORPS methods comparison final.png')
     plt.show()
     
 #fixed stock func
@@ -190,8 +190,8 @@ def online_newton_step(number_of_trades, number_of_stocks, r_matrix, x_ONS, D, G
     scores_ONS[0] = 1
     scores_ONS[1] = revanue(x_ONS, r_t, scores_ONS[0])
     for t in range(2,number_of_trades):
-        grad_t = gradient(x_ONS, r_matrix[ : , t-2])
-        r_t = r_matrix[ : , t-1]
+        grad_t = gradient(x_ONS, r_matrix[ :,t-2])
+        r_t = r_matrix[ :,t-1]
         grad_matrix = np.outer(grad_t, grad_t)
         A = A + grad_matrix
         y_t = x_ONS - (1/gamma)*np.dot(np.linalg.inv(A),grad_t)
